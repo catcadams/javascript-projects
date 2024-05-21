@@ -1,5 +1,7 @@
 function reverse(str) {
-   let lettersArray = str.split('');
-   let reversedLettersArray = lettersArray.reverse();
-   return reversedLettersArray.join('');
+   let lettersArray = str.split('').reverse().join('');
+   return lettersArray;
 }
+let reversedMessage = "reverse this message";
+console.log(reversedMessage);
+console.log(reverse(reversedMessage));
