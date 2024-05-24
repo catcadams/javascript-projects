@@ -10,26 +10,17 @@
 // 6. Optional: Use method chaining to reduce the lines of code within the function.
 
 function reverseCharacters(stringToReverse) {
-    if (typeof(stringToReverse) === "string") {
-     stringToReverse.split('').reverse().join('');
-     console.log(typeof(stringToReverse), "if");
-     console.log(stringToReverse);
-    } else if (typeof(stringToReverse) === "number") {
-        let numToString = String(stringToReverse);
-        let stringToNum = numToString.split('').reverse().join('');
-        console.log(stringToNum);
-        stringToNum = Number(stringToNum);
-        // console.log(stringToNum, "else if");
-        return stringToNum
+    if (typeof (stringToReverse) === "string") {
+       return stringToReverse.split('').reverse().join('');
+    } else if (typeof (stringToReverse) === "number") {
+        stringToReverse = (String(stringToReverse)).split('').reverse().join('');
+        stringToReverse = Number(stringToReverse);
+        return stringToReverse;
     } else {
-        console.log(typeof(stringToReverse), "else");
-        console.log(stringToReverse);
         return "invalid input";
-    } 
-console.log(typeof(stringToReverse), "outside of conditional");
-    return stringToReverse;
+    }
 }
-console.log(reverseCharacters(12345));
+console.log(reverseCharacters(8675309));
 
 // Part Two: Reverse Digits
 
@@ -52,12 +43,32 @@ let arrayTest1 = ['apple', 'potato', 'Capitalized Words'];
 let arrayTest2 = [123, 8897, 42, 1168, 8675309];
 let arrayTest3 = ['hello', 'world', 123, 'orange'];
 
+let reversedArray = [];
+
+function reverseArrayItems(arrayToReverse) {
+    for (let index = 0; index < arrayToReverse.length; index++) {
+       reversedArray.push(reverseCharacters(arrayToReverse[index]));
+    } return reversedArray;
+} console.log(reverseArrayItems(arrayTest3));
+
 // Bonus Missions
 
 // 1. Have a clear, descriptive name like funPhrase.
 // 2. Retrieve only the last character from strings with lengths of 3 or less.
 // 3. Retrieve only the first 3 characters from strings with lengths larger than 3.
 // 4. Use a template literal to return the phrase We put the '___' in '___'. Fill the first blank with the modified string, and fill the second blank with the original string.
+
+let shortenedString = '';
+
+function createFunPhrase(string) {
+    if (string.length < 4) {
+        shortenedString = string.slice(-1);
+        return `We put the ${shortenedString} in ${string}`;
+    } else {
+        shortenedString = string.slice(0,3);
+        return `We put the ${shortenedString} in ${string}`;
+    }
+} console.log(createFunPhrase('Fun'));
 
 // Test Function
 
@@ -71,3 +82,13 @@ let arrayTest3 = ['hello', 'world', 123, 'orange'];
 // 3. Call your area function by passing in two arguments - the length and width.
 // 4. If only one argument is passed to the function, then the shape is a square. Modify your code to deal with this case.
 // 5. Use a template literal to print, “The area is ____ cm^2.”
+
+function calculateAreaOfRectangle(length, width) {
+    let areaOfRectangle;
+    if (width === undefined) {
+        areaOfRectangle = length*length;
+    } else {
+        areaOfRectangle = length*width;
+    }
+    return areaOfRectangle;
+} console.log(`The area is ${calculateAreaOfRectangle(20)} cm^2`);
