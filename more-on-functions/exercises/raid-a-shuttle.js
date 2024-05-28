@@ -24,8 +24,7 @@ let cargoHold = ['meal kits', 'space suits', 'first-aid kit', 'satellite', 'gold
 console.log("Fuel level: " + checkFuel(fuelLevel));
 console.log("Hold status: " + holdStatus(cargoHold));
 
-/* Steal some fuel from the shuttle:
- * /
+//  Steal some fuel from the shuttle:
  
 //a). Define an anonymous function and set it equal to a variable with a normal, non-suspicious name. The function takes one parameter. This will be the fuel level on the shuttle.
 
@@ -35,9 +34,19 @@ console.log("Hold status: " + holdStatus(cargoHold));
 
 //d). Decide where to best place your function call to gather our new fuel.
 
-/* Next, liberate some of that glorious cargo.
- * /
+let fuelCheck = function(fuel) {
+  if (checkFuel(fuel) === 'green') {
+    return fuel - 100001;
+  } else if (checkFuel(fuel) === 'yellow') {
+    return fuel - 50001;
+  } else {
+    return fuel;
+  }
+};
+console.log(fuelCheck(fuelLevel));
 
+// Next, liberate some of that glorious cargo.
+ 
 //a). Define another anonymous function with an array as a parameter, and set it equal to another innocent variable.
 
 //b). You need to swipe two items from the cargo hold. Choose well. Stealing water ain’t gonna get us rich. Put the swag into a new array and return it from the function.
@@ -46,8 +55,13 @@ console.log("Hold status: " + holdStatus(cargoHold));
 
 //d). Don’t get hasty, matey! Remember to test your function.
 
-/* Finally, you need to print a receipt for the accountant. Don’t laugh! That genius knows MATH and saves us more gold than you can imagine.
- * /
+let notCargoSupplies = function(array) {
+  let stolenSupplies = [];
+  stolenSupplies.push(array[3], array[4]);
+  array.splice(3,2,'chocolate','juice');
+  return stolenSupplies;
+};
+// Finally, you need to print a receipt for the accountant. Don’t laugh! That genius knows MATH and saves us more gold than you can imagine.
  
 //a). Define a function called irs that can take fuelLevel and cargoHold as arguments.
 	
@@ -55,3 +69,7 @@ console.log("Hold status: " + holdStatus(cargoHold));
 
 //c). Use a template literal to return, "Raided _____ kg of fuel from the tanks, and stole ____ and ____ from the cargo hold."
 
+function irs(fuelLevel, cargoItems) {
+  let items = notCargoSupplies(cargoItems)
+  return `Raided ${fuelCheck(fuelLevel)} kg of fuel from the tanks, and stole ${items[0]} and ${items[1]} from the cargo hold`
+} console.log(irs(fuelLevel, cargoHold));
