@@ -1,17 +1,13 @@
 //1) Create a function with an array of numbers as its parameter. The function should iterate through the array and return the minimum value from the array. Hint: Use what you know about if statements to identify and store the smallest value within the array.
 const minValue = (numsArray) => {
-    let minNum = 0;
+    let minNum = numsArray[0];
     for (index = 0; index < numsArray.length; index++) {
-        if (numsArray[index] < 0 && numsArray[index] < minNum) {
-           minNum = numsArray[index];
-        // } 
-        // else if ((numsArray[index] - numsArray[index+1]) < 0) {
-        //    minNum = numsArray[index];
-        // } else {
-        //     minNum = numsArray[index];
+        if (numsArray[index] < minNum) {
+            minNum = numsArray[index];
         }
     } return minNum;
 };
+
 //Sample arrays for testing:
 let nums1 = [5, 10, 2, 42];
 let nums2 = [-2, 0, -10, -44, 5, 3, 0, 3];
