@@ -21,8 +21,8 @@ describe("whoWon", function () {
     let output = whoWon("paper", "rock");
     expect(output).toEqual("Player 1 wins!");
   });
-//   test("returns 'Invalid input.' if player1 or player2 is not equal to rock, paper, or scissors", function () {
-//     let output = whoWon("paper", "box");
-//     expect(output).toEqual("Invalid input.");
-//   });
+  // test("returns 'Invalid input.' if player1 or player2 is not equal to rock, paper, or scissors", function () {
+  //   let output = whoWon("launch", "code");
+  //   expect(output).toEqual("Invalid input.");
+  // });
 });
