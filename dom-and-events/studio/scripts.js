@@ -24,6 +24,7 @@ window.addEventListener("load", () => {
       flightStatus.innerHTML = "Shuttle in flight.";
       shuttleBackground.style.backgroundColor = "blue";
       rocket.style.bottom = String(parseInt(rocket.style.bottom) + 10) + "px";
+      shuttleHeight.innerHTML = parseInt(shuttleHeight.innerHTML) + 10000;
     }
   });
 
