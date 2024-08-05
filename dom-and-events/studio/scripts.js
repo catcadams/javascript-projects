@@ -11,6 +11,9 @@ window.addEventListener("load", () => {
   const land = document.getElementById("landing");
   const abort = document.getElementById("missionAbort");
   const up = document.getElementById("up");
+  const down = document.getElementById("down");
+  const right = document.getElementById("right");
+  const left = document.getElementById("left");
   const shuttleHeight = document.getElementById("spaceShuttleHeight");
 
   takeOff.addEventListener("click", () => {
@@ -29,6 +32,8 @@ window.addEventListener("load", () => {
     flightStatus.innerHTML = "The shuttle has landed.";
     shuttleBackground.style.backgroundColor = "green";
     rocket.style.bottom = "0";
+    rocket.style.left = "0";
+    shuttleHeight.innerHTML = 0;
   });
 
   abort.addEventListener("click", () => {
@@ -39,6 +44,8 @@ window.addEventListener("load", () => {
       flightStatus.innerHTML = "Mission aborted.";
       shuttleBackground.style.backgroundColor = "green";
       rocket.style.bottom = "0";
+      rocket.style.left = "0";
+      shuttleHeight.innerHTML = 0;
     }
   });
 
@@ -48,6 +55,20 @@ window.addEventListener("load", () => {
     shuttleBackground.style.backgroundColor = checkLaunch(
       parseInt(rocket.style.bottom)
     );
+  });
+
+  down.addEventListener("click", () => {
+    rocket.style.bottom = String(parseInt(rocket.style.bottom) - 10) + "px";
+    shuttleHeight.innerHTML = parseInt(shuttleHeight.innerHTML) - 10000;
+    shuttleBackground.style.backgroundColor = checkLaunch(
+      parseInt(rocket.style.bottom)
+    );
+  });
+  right.addEventListener("click", () => {
+    rocket.style.left = String(parseInt(rocket.style.left) + 10) + "px";
+  });
+  left.addEventListener("click", () => {
+    rocket.style.left = String(parseInt(rocket.style.left) - 10) + "px";
   });
 
   const checkLaunch = (height) => {
