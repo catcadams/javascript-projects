@@ -1,19 +1,81 @@
-<!doctype html>
-
+<!DOCTYPE html>
+<link rel="stylesheet" href="styles.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+  rel="stylesheet"
+/>
 <head>
-	<meta charset="utf-8">
-	<script>
-		// TODO: create a handler
-    window.addEventListener("load", function(){
-        // TODO: register the handler
+  <meta charset="utf-8" />
+  <script>
+    // TODO: create a handler
+
+    function setSearchEngine() {
+      let searchEngine = document.querySelector("input[name=engine]:checked");
+      searchEngine = searchEngine.value;
+      let actions = {
+        google: "https://www.google.com/search",
+        duckDuckGo: "https://duckduckgo.com/",
+        bing: "https://www.bing.com/search",
+        ask: "https://www.ask.com/web",
+      };
+      let actionURL = actions[searchEngine];
+      return actionURL;
+      //   console.log("setSearchEngine ran");
+    }
+
+    window.addEventListener("load", function () {
+      const form = document.querySelector("form");
+      form.addEventListener("submit", function () {
+        form.setAttribute("action", setSearchEngine());
+      });
     });
-	</script>
+  </script>
 </head>
 
 <body>
-
-	<form id="searchForm">
+	<h1>Choose Your Search Engine!</h1>
+  <form id="searchForm">
     <!-- TODO: add form elements -->
-	</form>
-
+    <label>Search: <input type="text" name="q" /></label>
+    <label>Google<input type="radio" name="engine" value="google" /></label>
+    <label
+      >DuckDuckGo<input type="radio" name="engine" value="duckDuckGo"
+    /></label>
+    <label>Bing<input type="radio" name="engine" value="bing" /></label>
+    <label>Ask<input type="radio" name="engine" value="ask" /></label>
+    <button type="submit">Go!</button>
+  </form>
 </body>
+
+<style>
+  * {
+    font-family: "Roboto";
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  h1 {
+	text-transform: capitalize;
+	font-weight: bold;
+  }
+
+  button {
+    background-color: #444444;
+    color: white;
+    padding: 10px 50px;
+    border-radius: 25px;
+  }
+
+  input[type="radio"] {
+    height: 1rem;
+    width: 1rem;
+    position: relative;
+    bottom: 3px;
+  }
+
+  label {
+	margin-right: 10px;
+  }
+</style>
